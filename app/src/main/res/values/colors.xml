@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
+    <color name="event_color_upcoming">#940C29</color>
+    <color name="event_color_past">#B83B4C</color>
+    <color name="button_selected">#E0144E</color>
+    <color name="button_not_selected">#353F49</color>
+
+    <color name="header_text_color">#353F49</color>
+    <color name="header_row_text_color">#ff878384</color>
+    <color name="cell_separator">#DDDEDE</color>
+    <color name="green">#009900</color>
+    <color name="red">#BB0000</color>
+
+    <color name="label_color">#323031</color>
+    <color name="color_primary_light">#E31458</color>
+    <color name="white">#ffffff</color>
+    <color name="edittext_color">#D3D3D3</color>
+    <color name="label_color_light">#BCBCBC</color>
+    <color name="darkPink">#950C2A</color>
+    <color name="border_color">#979797</color>
+
+
+    <color name="caldroid_white">#FFFFFF</color>
+    <color name="caldroid_black">#000000</color>
+    <color name="caldroid_transparent">#00000000</color>
+    <!-- For settings framework -->
+    <color name="caldroid_lighter_gray">#ddd</color>
+    <color name="caldroid_gray">#CCC</color>
+    <color name="caldroid_darker_gray">#aaa</color>
+    <!-- A light Holo shade of blue -->
+    <color name="caldroid_holo_blue_light">#ff33b5e5</color>
+    <!-- A dark Holo shade of blue -->
+    <color name="caldroid_holo_blue_dark">#ff0099cc</color>
+    <!-- A really bright Holo shade of blue -->
+    <color name="caldroid_sky_blue">#FFA3E8F7</color>
+
+    <!-- For Background and text color -->
+    <color name="caldroid_background_color">#E0144E</color>
+    <color name="month_text_color">#ff868384</color>
+    <color name="blank_space">#EBECEC</color>
+</resources>

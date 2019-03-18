@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+    <com.anuraj.weekviewdemo.weekview.WeekView
+        android:id="@+id/weekView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:columnGap="1dp"
+        app:eventTextColor="@android:color/white"
+        app:headerColumnBackground="@color/caldroid_white"
+        app:headerColumnPadding="5dp"
+        app:headerColumnTextColor="@color/header_text_color"
+        app:headerRowBackgroundColor="@color/blank_space"
+        app:headerRowPadding="15dp"
+        app:headerRowTextColor="@color/header_row_text_color"
+        app:noOfVisibleDays="7"
+        app:textSize="14sp"
+        app:todayHeaderTextColor="@color/button_selected"
+        app:typeface="fonts/RalewayMedium.ttf"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/action_week_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="33dp"
+        android:visibility="gone"
+        tools:layout_editor_absoluteY="16dp" />
+
+</android.support.constraint.ConstraintLayout>
