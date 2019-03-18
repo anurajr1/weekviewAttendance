@@ -50,7 +50,6 @@ public class WeekView extends View {
     private static final String CALENDAR_PREFERENCES = "Calendar date";
     private static final String DATE_KEY_WEEK = "Week View";
     private final Context mContext;
-    // Typeface for text - Added by Muddassir
     Typeface textTypeface;
     String textTypefaceName;
     @Deprecated
@@ -65,7 +64,7 @@ public class WeekView extends View {
     private float mTimeTextWidth;
     private float mTimeTextHeight;
     private Paint mHeaderTextPaint;
-    private Paint mHeaderRowTextPaint; // Added by Muddassir
+    private Paint mHeaderRowTextPaint;
     private float mHeaderTextHeight;
     private GestureDetectorCompat mGestureDetector;
     private OverScroller mScroller;
@@ -74,7 +73,7 @@ public class WeekView extends View {
     private Direction mCurrentScrollDirection = Direction.NONE;
     private Paint mHeaderBackgroundPaint;
     private float mWidthPerDay;
-    private float mWidthPerDayOriginal; // Added - Muddassir
+    private float mWidthPerDayOriginal;
     private Paint mDayBackgroundPaint;
     private Paint mHourSeparatorPaint;
     private float mHeaderMarginBottom;
@@ -90,7 +89,7 @@ public class WeekView extends View {
     private boolean mRefreshEvents = false;
     private float mDistanceY = 0;
     private float mDistanceX = 0;
-    private float minYDistance = 50; // Added by Muddassir
+    private float minYDistance = 50;
     private Direction mCurrentFlingDirection = Direction.NONE;
     // Attributes and their default values.
     private int mHourHeight = 50;
@@ -102,25 +101,25 @@ public class WeekView extends View {
     private int mHeaderColumnTextColorNew = Color.RED;
     private int mNumberOfVisibleDays = 1;
     private int mHeaderRowPadding = 15;
-    private int mHeaderRowTextColor = Color.rgb(134, 131, 132); // Added by Muddassir
-    private int mHeaderRowBackgroundColor = Color.rgb(224, 20, 79); // Edited by Muddassir
-    private int mDayBackgroundColor = Color.rgb(235, 236, 236); // Color.rgb(245, 245, 245); // Change by Muddassir
-    private int mHourSeparatorColor = Color.WHITE;/*Color.rgb(221, 222, 222);*/ // Edited by Muddassir
-    private int mTodayBackgroundColor = Color.rgb(235, 236, 236);  //Color.rgb(239, 247, 254); // Changed by Muddassir
+    private int mHeaderRowTextColor = Color.rgb(134, 131, 132);
+    private int mHeaderRowBackgroundColor = Color.rgb(224, 20, 79);
+    private int mDayBackgroundColor = Color.rgb(235, 236, 236); // Color.rgb(245, 245, 245);
+    private int mHourSeparatorColor = Color.WHITE;/*Color.rgb(221, 222, 222);*/
+    private int mTodayBackgroundColor = Color.rgb(235, 236, 236);  //Color.rgb(239, 247, 254);
     private int mHourSeparatorHeight = 2;
-    private int mTodayHeaderTextColor = Color.rgb(224, 20, 79); // Edited - Muddassir
+    private int mTodayHeaderTextColor = Color.rgb(224, 20, 79);
     private int mEventTextSize = 12;
     private int mEventTextColor = Color.BLACK;
     private int mEventPadding = 8;
     private int mHeaderColumnBackgroundColor = Color.WHITE;
-    private int mDefaultEventColor = Color.rgb(174, 208, 238); // Changed by Muddassir
+    private int mDefaultEventColor = Color.rgb(174, 208, 238);
     private boolean mIsFirstDraw = true;
     private int mOverlappingEventGap = 0;
     private int mEventMarginVertical = 0;
     private float mXScrollingSpeed = 0.5f; // changed
     private Calendar mFirstVisibleDay;
     private Calendar mLastVisibleDay;
-    // To make dates clickable - Added by Lakshmi
+    // To make dates clickable
     private List<RectF> rectList = new ArrayList<>();
     private Map<RectF, Calendar> rectanglesWithDate = new HashMap<>();
     private RectF headerRect;
@@ -231,7 +230,7 @@ public class WeekView extends View {
                         mScroller.fling(0, (int) mCurrentOrigin.y, 0,
                                 (int) velocityY, 0, 0,
                                 (int) -(mHourHeight * quarterCount + mHeaderTextHeight +
-                                        mHeaderRowPadding * 68 / 15 - getHeight()), 0); // Edited by Muddassir
+                                        mHeaderRowPadding * 68 / 15 - getHeight()), 0);
                     }
                 }
                 ViewCompat.postInvalidateOnAnimation(WeekView.this);
@@ -374,12 +373,12 @@ public class WeekView extends View {
         this.textTypeface = textTypeface;
     }
 
-    // Get the end time of the calendar view - Added by Muddassir
+    // Get the end time of the calendar view
     public int getmEndMinute() {
         return mEndMinute;
     }
 
-    // Set the end time of the calendar view - Added by Muddassir
+    // Set the end time of the calendar view
     public void setmEndMinute(String endTime) {
         DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
         Date date = null;
@@ -410,12 +409,12 @@ public class WeekView extends View {
 
 
 
-    // Get the start time of the calendar view - Added by Muddassir
+    // Get the start time of the calendar view
     public int getmStartMinute() {
         return mStartMinute;
     }
 
-    // Set the start time of the calendar view - Added by Muddassir
+    // Set the start time of the calendar view
     public void setmStartMinute(String startTime) {
         DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
         Date date = null;
@@ -460,7 +459,7 @@ public class WeekView extends View {
         mHeaderTextHeight = rect.height();
         mHeaderTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
 
-        // Measure settings for header row text.- Added By Muddassir
+        // Measure settings for header row text.
         mHeaderRowTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mHeaderRowTextPaint.setColor(mHeaderRowTextColor);
         mHeaderRowTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -511,7 +510,7 @@ public class WeekView extends View {
         // Set default event color.
         mDefaultEventColor = Color.parseColor("#9fc6e7");
 
-        // Set Typeface of the texts - Added by Muddassir
+        // Set Typeface of the texts
         if (textTypefaceName != null) {
             textTypeface = Typeface.createFromAsset(getContext().getAssets(), textTypefaceName);
             setCustomTextTypeface(textTypeface);
@@ -523,7 +522,7 @@ public class WeekView extends View {
                 (CALENDAR_PREFERENCES, Context.MODE_PRIVATE);
     }
 
-    // Set the typeface of all the texts - Added by Muddassir
+    // Set the typeface of all the texts
     private void setCustomTextTypeface(Typeface textTypeface) {
         mTimeTextPaint.setTypeface(textTypeface);
         mEventTextPaint.setTypeface(textTypeface);
@@ -548,7 +547,7 @@ public class WeekView extends View {
 
         // Hide everything in the first cell (top left corner).
         //canvas.drawRect(0, 0, mTimeTextWidth + mHeaderColumnPadding * 2, mHeaderTextHeight + mHeaderRowPadding * 2, mHeaderBackgroundPaint);
-        monthRect = new RectF(0, 0, mTimeTextWidth + mHeaderColumnPadding * 8, mHeaderTextHeight + mHeaderRowPadding * 68 / 15); // Edited by Lakshmi
+        monthRect = new RectF(0, 0, mTimeTextWidth + mHeaderColumnPadding * 8, mHeaderTextHeight + mHeaderRowPadding * 68 / 15);
         canvas.drawRect(monthRect, mHeaderBackgroundPaint); // Edited by Lakshmi
 
         // Edited by Lakshmi
@@ -563,13 +562,13 @@ public class WeekView extends View {
 
     private void drawTimeColumnAndAxes(Canvas canvas) {
         // Do not let the view go above/below the limit due to scrolling. Set the max and min limit of the scroll.
-        //quarterCount = ((mEndMinute - mStartMinute) / 15); // Added by Muddassir for quarter calculation
+        //quarterCount = ((mEndMinute - mStartMinute) / 15); for quarter calculation
         quarterCount = operatorLength;
         if (mCurrentScrollDirection == Direction.VERTICAL) {
             if (mCurrentOrigin.y - mDistanceY > 0) mCurrentOrigin.y = 0;
             /*else if (mCurrentOrigin.y - mDistanceY < -(mHourHeight * 24 + mHeaderTextHeight + mHeaderRowPadding * 2 - getHeight()))
                 mCurrentOrigin.y = -(mHourHeight * 24 + mHeaderTextHeight + mHeaderRowPadding * 2 - getHeight());*/
-            else if (mCurrentOrigin.y - mDistanceY < -(mHourHeight * quarterCount + mHeaderTextHeight + mHeaderRowPadding * 68 / 15 - getHeight())) // Edited by Muddassir
+            else if (mCurrentOrigin.y - mDistanceY < -(mHourHeight * quarterCount + mHeaderTextHeight + mHeaderRowPadding * 68 / 15 - getHeight()))
                 mCurrentOrigin.y = -(mHourHeight * quarterCount + mHeaderTextHeight + mHeaderRowPadding * 68 / 15 - getHeight());
 
             else mCurrentOrigin.y -= mDistanceY;
@@ -577,21 +576,21 @@ public class WeekView extends View {
 
         // Draw the background color for the header column.
         columnRect = new RectF(0, mHeaderTextHeight + mHeaderRowPadding * 3, mHeaderColumnWidth, getHeight());
-        canvas.drawRect(columnRect, mHeaderColumnBackgroundPaint); // Edited by Muddassir
+        canvas.drawRect(columnRect, mHeaderColumnBackgroundPaint);
 
         // Calculate initial hours and quarter
         int initHour = mStartMinute / 60;
         int quarter = (mStartMinute % 60) / 15;
         /*for (int i = 0; i < 24; i++) {*/ // Changed
-        for (int i = 0; i < quarterCount; i++) { // Edited by Muddassir
-            float top = mHeaderTextHeight + mHeaderRowPadding * 68 / 15 + mCurrentOrigin.y + mHourHeight * i + mHeaderMarginBottom; // to change top of column header, Edited by Muddassir
+        for (int i = 0; i < quarterCount; i++) {
+            float top = mHeaderTextHeight + mHeaderRowPadding * 68 / 15 + mCurrentOrigin.y + mHourHeight * i + mHeaderMarginBottom; // to change top of column header,
             if (quarter == 4) {
                 quarter = 0;
                 initHour++;
             }
             // Draw the text if its y position is not outside of the visible area. The pivot point of the text is the point at the bottom-right corner.
             // String time = getDateTimeInterpreter().interpretTime(i);
-            String time = getDateTimeInterpreter().interpretQuarter(initHour, quarter); // Added by Muddassir
+            String time = getDateTimeInterpreter().interpretQuarter(initHour, quarter);
             quarter++;
             if (time == null)
                 throw new IllegalStateException("A DateTimeInterpreter must not return null time");
@@ -601,20 +600,20 @@ public class WeekView extends View {
 //                } else {
 //                    mTimeTextPaint.setFakeBoldText(false);
 //                }
-                    canvas.drawText(opName[i], mTimeTextWidth + mHeaderColumnPadding * 3, top + 25 + mTimeTextHeight, mTimeTextPaint); // Edited by Muddassir
+                    canvas.drawText(opName[i], mTimeTextWidth + mHeaderColumnPadding * 3, top + 25 + mTimeTextHeight, mTimeTextPaint);
             //}
         }
     }
 
     private String[] drawHeaderRowAndEvents(Canvas canvas) {
         // Calculate the available width for each day.
-        mHeaderColumnWidth = mTimeTextWidth + mHeaderColumnPadding * 8; // Edited by Muddassir
+        mHeaderColumnWidth = mTimeTextWidth + mHeaderColumnPadding * 8;
         mWidthPerDay = getWidth() - mHeaderColumnWidth - mColumnGap * (mNumberOfVisibleDays - 1);
 
-        // To make the tiles square shaped - Added by Muddassir
+        // To make the tiles square shaped -
         mHourHeight = (int) mWidthPerDay / 7;
 
-        // To record the column width of the one day view - Added by Muddassir
+        // To record the column width of the one day view -
         if (mIsFirstDraw) {
             mWidthPerDayOriginal = mWidthPerDay;
             mIsFirstDraw = false;
@@ -622,7 +621,7 @@ public class WeekView extends View {
         mWidthPerDay = mWidthPerDay / mNumberOfVisibleDays;
 
         // If the week view is being drawn for the first time, then consider the first day of week.
-        if (mIsFirstDraw && mNumberOfVisibleDays > 7) { // Changed by Muddassir
+        if (mIsFirstDraw && mNumberOfVisibleDays > 7) {
             if (mToday.get(Calendar.DAY_OF_WEEK) != mFirstDayOfWeek) {
                 int difference = 7 + (mToday.get(Calendar.DAY_OF_WEEK) - mFirstDayOfWeek);
                 mCurrentOrigin.x += (mWidthPerDay + mColumnGap) * difference;
@@ -644,7 +643,7 @@ public class WeekView extends View {
         day.add(Calendar.HOUR, 6);
 
         // Prepare to iterate for each hour to draw the hour lines.
-        int lineCount = (int) ((getHeight() - mHeaderTextHeight - mHeaderRowPadding * 68 / 15 - // Changed by Muddassir
+        int lineCount = (int) ((getHeight() - mHeaderTextHeight - mHeaderRowPadding * 68 / 15 -
                 mHeaderMarginBottom) / mHourHeight) + 1;
         lineCount = (lineCount) * (mNumberOfVisibleDays + 1);
         float[] hourLines = new float[lineCount * 4];
@@ -736,7 +735,7 @@ public class WeekView extends View {
                 String[] dateAndDay = dayLabel.split(",");
                 Paint newPaint = new Paint();
                 newPaint.setTypeface(mHeaderRowTextPaint.getTypeface());
-                newPaint.setColor(mHeaderRowTextColor); // Edited by Muddassir
+                newPaint.setColor(mHeaderRowTextColor);
                 newPaint.setTextSize(mTextSize * 1.5f);
                 canvas.drawText(dateAndDay[1].toUpperCase().substring(0, 3) + " "
                                 + dateAndDay[2], startPixel + mWidthPerDay / 2.6f,
@@ -749,7 +748,7 @@ public class WeekView extends View {
                 canvas.drawText(dateAndDay[0], startPixel + mWidthPerDay / 5,
                         mHeaderTextHeight * 3.5f + mHeaderRowPadding, newPaint);
             } else {
-                // Draw rectangle for click - Added by Lakshmi
+                // Draw rectangle for click
                 Paint mPaint = new Paint();
                 mPaint.setColor(Color.WHITE);
                 mPaint.setAlpha(0); // Full transparent
@@ -760,7 +759,7 @@ public class WeekView extends View {
                         startPixel + mWidthPerDay,
                         mHeaderTextHeight * 6 + mHeaderRowPadding);
 
-                // Draw circle to distinguish today - Added by Muddassir
+                // Draw circle to distinguish today
                 Paint circlePaint = new Paint();
                 circlePaint.setAntiAlias(true);
                 circlePaint.setColor(Color.WHITE);
@@ -770,16 +769,16 @@ public class WeekView extends View {
                     circlePaint.setAlpha(0);
                 }
 
-                // store date with the boundary rectangle - Added by Lakshmi
+                // store date with the boundary rectangle
                 rectList.add(bounds);
                 rectanglesWithDate.put(bounds, day);
                 canvas.drawRect(bounds, mPaint);
 
                 canvas.drawCircle(startPixel + mWidthPerDay / 2,
-                        mHeaderTextHeight * 4.25f + mHeaderRowPadding, mHeaderRowPadding * 0.8f, circlePaint);   // Changed by Muddassir
+                        mHeaderTextHeight * 4.25f + mHeaderRowPadding, mHeaderRowPadding * 0.8f, circlePaint);
                 dayDate = dayLabel.split(",");
 
-                // Added by Muddassir
+
                 Paint newPaint = new Paint();
                 newPaint.setColor(mHeaderRowTextColor);
                 newPaint.setTypeface(mHeaderTextPaint.getTypeface());
@@ -832,7 +831,7 @@ public class WeekView extends View {
                 day.add(Calendar.DATE, dayNumber - 1);
                 float pixelsFromZero = y - mCurrentOrigin.y - mHeaderTextHeight - mHeaderRowPadding * 60 / 15 - mTimeTextHeight / 2 - mHeaderMarginBottom;// Changed
 
-                // changed for quarter - Edited by Muddassir
+                // changed for quarter -
                 int mHourHeight = this.mHourHeight * 4;
                 int hour = (int) (pixelsFromZero / (mHourHeight));
                 int minute = (int) (60 * (pixelsFromZero - hour * mHourHeight) / mHourHeight);
@@ -860,7 +859,7 @@ public class WeekView extends View {
                     // Calculate top.
                     quarterCount = ((mEndMinute - mStartMinute) / 15);  // Adjust event height
                     //float top = mHourHeight * 24 * mEventRects.get(i).top / 1440 + mCurrentOrigin.y + mHeaderTextHeight + mHeaderRowPadding * 2 + mHeaderMarginBottom + mTimeTextHeight / 2 + mEventMarginVertical;
-                    float top = ((mEventRects.get(i).top - mStartMinute) * mHourHeight) / 15 + mCurrentOrigin.y + mHeaderTextHeight + mHeaderRowPadding * 60 / 15 + mHeaderMarginBottom + mTimeTextHeight / 2; // Edited by Lakshmi
+                    float top = ((mEventRects.get(i).top - mStartMinute) * mHourHeight) / 15 + mCurrentOrigin.y + mHeaderTextHeight + mHeaderRowPadding * 60 / 15 + mHeaderMarginBottom + mTimeTextHeight / 2;
                     float originalTop = top;
                     if (top < mHeaderTextHeight + mHeaderRowPadding * 60 / 15 + mHeaderMarginBottom + mTimeTextHeight / 2)
                         top = mHeaderTextHeight + mHeaderRowPadding * 60 / 15 + mHeaderMarginBottom + mTimeTextHeight / 2;
@@ -868,7 +867,7 @@ public class WeekView extends View {
                     // Calculate bottom.
                     float bottom = mEventRects.get(i).bottom;
                     //bottom = mHourHeight * 24 * bottom / 1440 + mCurrentOrigin.y + mHeaderTextHeight + mHeaderRowPadding * 2 + mHeaderMarginBottom + mTimeTextHeight / 2 - mEventMarginVertical;
-                    bottom = ((mEventRects.get(i).bottom - mStartMinute) * mHourHeight) / 15 + mCurrentOrigin.y + mHeaderTextHeight + mHeaderRowPadding * 60 / 15 + mHeaderMarginBottom + mTimeTextHeight / 2; // Edited by Lakshmi
+                    bottom = ((mEventRects.get(i).bottom - mStartMinute) * mHourHeight) / 15 + mCurrentOrigin.y + mHeaderTextHeight + mHeaderRowPadding * 60 / 15 + mHeaderMarginBottom + mTimeTextHeight / 2;
 
                     // Calculate left and right.
                     float left = startFromPixel + mEventRects.get(i).left * mWidthPerDay;
@@ -1294,7 +1293,6 @@ public class WeekView extends View {
                     sdf = mDayNameLength == LENGTH_SHORT ? new SimpleDateFormat("EEEEE") : new SimpleDateFormat("EEEEE")/*new SimpleDateFormat("EEE")*/;// changed
                     try {
                         /** Extract the Formatted date for day view as well as week view
-                         * Edited by Muddassir
                          */
                         if (mNumberOfVisibleDays == 1) { // New code
                             sdf = new SimpleDateFormat("dd,MMMM,yyyy,EEEE");
@@ -1332,7 +1330,7 @@ public class WeekView extends View {
                 @Override
                 /**
                  * This method returns the time with the proper quarter format
-                 * Added by Muddassir
+                 *
                  */
                 public String interpretQuarter(int hour, int quarter) {
                     String amPm;
@@ -1682,7 +1680,7 @@ public class WeekView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        // this is to move to day view on date touch of week view - Added by Lakshmi
+        // this is to move to day view on date touch of week view
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             for (RectF rectF : rectList) {
                 if (rectF.contains(event.getX(), event.getY())) {
@@ -1728,18 +1726,18 @@ public class WeekView extends View {
                 mScroller.forceFinished(true);
                 float leftDays = Math.round(mCurrentOrigin.x / (mWidthPerDay + mColumnGap));
 
-                // To scroll number of days according to visible days - Edited by Muddassir
+                // To scroll number of days according to visible days
                 if (mScroller.getFinalX() < mScroller.getCurrX()) {
                     if (mNumberOfVisibleDays == 1) {
                         leftDays--;
                     } else {
-                        leftDays -= (mNumberOfVisibleDays - 1); // Added by Muddassir
+                        leftDays -= (mNumberOfVisibleDays - 1);
                     }
                 } else {
                     if (mNumberOfVisibleDays == 1) {
                         leftDays++;
                     } else {
-                        leftDays += (mNumberOfVisibleDays - 1); // Added by Muddassir
+                        leftDays += (mNumberOfVisibleDays - 1);
                     }
                 }
                 int nearestOrigin = (int) (mCurrentOrigin.x - leftDays * (mWidthPerDay + mColumnGap));
@@ -1888,7 +1886,7 @@ public class WeekView extends View {
     public interface EventClickListener {
         public void onEventClick(WeekViewEvent event, RectF eventRect);
 
-        public void onEventSwipe(WeekViewEvent event, RectF eventRect); // Added by Muddassir
+        public void onEventSwipe(WeekViewEvent event, RectF eventRect);
     }
 
     public interface MonthChangeListener {
@@ -1902,7 +1900,7 @@ public class WeekView extends View {
     public interface EmptyViewClickListener {
         public void onEmptyViewClicked(Calendar time);
 
-        public void onEmptyViewSwiped(Calendar time); // Added by Muddassir
+        public void onEmptyViewSwiped(Calendar time);
     }
     /////////////////////////////////////////////////////////////////
     //
