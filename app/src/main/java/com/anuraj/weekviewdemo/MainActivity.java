@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
 
     // This is the counter for event count - can be removed after testing
     private static int count = 1;
-    // To keep record of viewType being shown - Added by Muddassir
+    // To keep record of viewType being shown -
     private static int viewType;
     // This map is used to store the events
     HashMap<Integer, List<WeekViewEvent>> eventMap = new HashMap<>();
-    // Typeface for text - Added by Muddassir
+    // Typeface for text
     Typeface ralewayLight, ralewayRegular, ralewaySemiBold;
     // Day view & Week view object
     private WeekView mWeekView;
@@ -111,13 +111,13 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
         viewType = WEEK_VIEW;
         // Initialise the typefaces
         ralewayLight = Typeface.createFromAsset(getAssets(),
-                RALEWAY_LIGHT); // Added by Muddassir
+                RALEWAY_LIGHT);
         ralewayRegular = Typeface.createFromAsset(getAssets(),
-                RALEWAY_REGULAR); // Added by Muddassir
+                RALEWAY_REGULAR);
         ralewaySemiBold = Typeface.createFromAsset(getAssets(),
-                RALEWAY_SEMI_BOLD); // Added by Muddassir
+                RALEWAY_SEMI_BOLD);
 
-        // To record the button pressed - Added by Muddassir
+        // To record the button pressed
 
         buttonWeekView = (Button) findViewById(R.id.action_week_view);
         buttonWeekView.setTypeface(ralewayRegular);
@@ -133,12 +133,12 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
         mWeekView.setMonthChangeListener(this);
         // to toggle button
         mWeekView.setmBackgroundListener(this);
-        // Setup start and end time of the calendar view - Added by Muddassir
+        // Setup start and end time of the calendar view
 //        mWeekView.setmEndMinute("24:00:00");
 //        mWeekView.setmStartMinute("01:00:00");
         mWeekView.setOperatorNames(strOperator);
         //mWeekView.setOperatorLength(3);
-        mWeekView.setEmptyViewClickListener(this); // Added by Muddassir
+        mWeekView.setEmptyViewClickListener(this);
     }
 
 
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
     }
 
     @Override
-    // It will implement the swipe on the events to cancel it - Added by Muddassir
+    // It will implement the swipe on the events to cancel it
     public void onEventSwipe(WeekViewEvent event, RectF eventRect) {
         if (cancelEvent(event)) {
             Toast.makeText(MainActivity.this, "deleted", Toast.LENGTH_SHORT).show();
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
     public void onEmptyViewClicked(Calendar time) {
         startEndTime = convertTime(time);
         {
-            // This tries to add event - Added by Muddassir
+            // This tries to add event
             if (addEvent(startEndTime[0], startEndTime[1], "On Leave")) {
                 Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                 count++;
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
     }
 
     @Override
-    // It will implement the swipe on the empty view to add blank - Added by Muddassir
+    // It will implement the swipe on the empty view to add blank
     public void onEmptyViewSwiped(Calendar time) {
         startEndTime = convertTime(time);
         if (addEvent(startEndTime[0], startEndTime[1], "")) {
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
         }
     }
 
-    // Extracts the event list of the specified month - Added by Muddassir
+    // Extracts the event list of the specified month
     private List<WeekViewEvent> extractEvent(int month) {
         List<WeekViewEvent> events = eventMap.get(month);
         if (events == null) {
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
     }
 
 
-    // Add event to the calendar - Added by Muddassir
+    // Add event to the calendar
     private boolean addEvent(Date startTime, Date endTime, String eventTitle) {
         Calendar currentDate = Calendar.getInstance();
         Date today = currentDate.getTime();
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements WeekView.MonthCha
 
     }
 
-    // This will remove the event from calendar - Added by Muddassir
+    // This will remove the event from calendar
     private boolean cancelEvent(WeekViewEvent event) {
         final int month = event.getStartTime().getTime().getMonth();
         List<WeekViewEvent> eventList = extractEvent(month + 1);
